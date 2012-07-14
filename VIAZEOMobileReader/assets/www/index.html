@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+	
+	<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script> 
+	<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="hellocordova.json.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+    	var myContact = navigator.contacts.create({"displayName": "Mils"});
+        myContact.note = "This contact has a note.";
+        console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
+        JSONLoader();
+        //alert('Latitude:'   );
+        //navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError,{ enableHighAccuracy: true });
+    }
+
+
+
+    // onSuccess Geolocation
+    //
+    function onGeolocationSuccess(position) {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+                            'Longitude: '          + position.coords.longitude             + '<br />' +
+                            'Altitude: '           + position.coords.altitude              + '<br />' +
+                            'Speed: '              + position.coords.speed                 + '<br />' +
+                            'Timestamp: '          + new Date(position.timestamp)          + '<br />';
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onGeolocationError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+    
+
+
+    </script
+
+</head>
+<body>
+
+
+
+</body>
+<div data-role=page id=home >
+	<div data-role=header data-position="fixed" >
+		<h1>MobileReader</h1>	
+	</div>
+	<div data-role=content id=home_content >
+		<a href="#about" data-rel="page" data-transition=slide >dialog</a><br>
+		<a href="#about2" data-rel="dialog" data-transition=slide >Box 2</a>
+		<p>
+		Bienvenue dans MobileReader
+		</p>
+		<hr>
+	</div>
+	<div data-role=footer data-position="fixed" >
+		<h1>Footer </h1>	
+	</div>
+</div>
+
+<div data-role=dialog id=about >
+	<div data-role=header >
+		<a href=#home data-transition=slide  >Retour</a>
+		<h1>Page 2</h1>	
+	</div>
+	<div data-role=content >
+		This article provides a walk-through of Android application debugging tools and guidelines to help developers to get up to speed faster and resolve defects more effectively on Android x86 platform.
+		<a href=#home data-rel="back" >Back</a>
+	</div>
+	<div data-role=footer data-position="fixed" >
+		<h1>About Footer</h1>	
+	</div>
+</div>
+
+
+<div data-role=dialog id=about2 >
+	<div data-role=header >
+		<a href=#home data-transition=slide  >Retour</a>
+		<h1> Header</h1>	
+	</div>
+	<div data-role=content >
+		A propos de ...
+		<br>
+		<br>
+		<a href=#home data-rel="back" >Back</a>
+	</div>
+	<div data-role=footer >
+		<h1>About Footer</h1>	
+	</div>
+</div>
+</html>
+
+
